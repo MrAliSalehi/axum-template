@@ -1,6 +1,6 @@
 # axum template
 
-#### an opinionated template for [axum](https://github.com/tokio-rs/axum).
+#### an opinionated template for [axum](https://github.com/tokio-rs/axum). aiming for mid to big scale projects.
 
 content:
 
@@ -20,7 +20,6 @@ this template contains the following crates:
 
 this design is somewhat similar to "onion architecture", with modifications.
 
-
 ### app layer
 
 this crate should only contain initial steps that are required for the service to run, right before the main "loop".
@@ -37,6 +36,33 @@ it does not handle any logic directly, but rather calling them through the 3rd l
 authentication & authorizations are partially handled by this layer, for example catching `Authorization` header, is
 handled by api layer, but parsing its contents and validations are left in the core layer.
 
+#### structure
+
+`components`:
+
+this directory contains routes and endpoints for the api, with their respective subdirectory.
+for example in the template you have an `auth` dir, all the auth related endpoints and their models live here, if you
+had endpoints for other matters, they would have their own dir.
+
+`middlewars`:
+
+this contains all of your middlewares and interceptors, because they are usually one or to functions they dont need
+separate directory.
+often placing them in `mod.rs` is okay.
+
+`models`:
+this contains every model that is shared across all directories, so they are not specific to some endpoints or
+middleware.
+
+note that you have to respect dependency inversion and not making depending your `lib-core` on the `lib-api` models.
+
+`utils`:
+
+this is where all the random crappy codes lives, usually stuff that cant be placed directly in components or they are
+used in multiple places.
+
+in the template there are some useful(or not) macros for returning response from the endpoints.
+
 ### core layer
 
 as the name implies, this is the core of the app, state management, caching, tasks, services, "managers", are all inside
@@ -52,10 +78,9 @@ useful tools like metric collections dynamically.
 
 in this design, the intention of this crate was not portability, so the database might not be easy to replace.
 
-
 ## Dependencies
 
-this templates uses the following main dependencies:
+these templates use the following main dependencies:
 
 - `axum` the web framework
 - `tokio`: the async runtime
