@@ -1,0 +1,25 @@
+[package]
+name = "lib-api"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lib-shared = { path = "../lib-shared" }
+lib-core = { path = "../lib-core" }
+tracing = { workspace = true }
+axum = { workspace = true }
+axum-client-ip = { workspace = true }
+axum-helmet = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+tokio = { workspace = true }
+http = { workspace = true }
+http-body-util = { workspace = true }
+bytes = { workspace = true }
+opentelemetry = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+axum-valid = { workspace = true }
+validify = { workspace = true }
+eyre = { workspace = true }
+ts-rs = { workspace = true }

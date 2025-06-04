@@ -1,0 +1,16 @@
+[package]
+name = "lib-db"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lib-shared = { path = "../lib-shared" }
+sqlx = { workspace = true }
+paste = { workspace = true }
+sea-orm = { workspace = true }
+eyre = { workspace = true }
+regex-macro = { workspace = true }
+tokio = { workspace = true }
+crossbeam-channel = { workspace = true }
+opentelemetry = { workspace = true }
+tracing = { workspace = true }

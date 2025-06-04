@@ -1,0 +1,68 @@
+[workspace]
+members = ["app", "lib-api", "lib-core", "lib-db", "lib-shared"]
+resolver = "2"
+
+[profile.dev.package.sqlx-macros]
+opt-level = 3
+
+[workspace.dependencies]
+# Async and concurrency
+tokio = { version = "1.45.0", features = ["rt-multi-thread", "macros"] }
+crossbeam-channel = "0.5.15"
+
+#Error handling & Logs & Metrics
+eyre = "0.6.12"
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter", "fmt", "parking_lot"] }
+opentelemetry = "0.30.0"
+opentelemetry_sdk = "0.30.0"
+opentelemetry-otlp = { version = "0.30.0", features = ["grpc-tonic"] }
+sysinfo = "0.35.0"
+
+
+# Networking and web
+axum = { version = "0.8.4", features = ["macros"] }
+axum-client-ip = "1.0.0"
+axum-helmet = "0.2.0"
+axum-valid = { version = "0.23.0", features = ["basic", "validify"], default-features = false }
+tower = { version = "0.5.2", features = ["buffer"] }
+tower-http = { version = "0.6.4", features = ["cors", "timeout", "limit", "catch-panic", "compression-gzip", "tracing", "trace"] }
+
+
+# Validation
+validify = "2.0.0"
+
+# Configuration and environment
+dotenvy = "0.15.7"
+
+# Data serialization and parsing
+serde = "1.0.219"
+serde_json = "1.0.140"
+ts-rs = { version = "11.0.0", features = ["serde-json-impl", "serde_json", "chrono", "chrono-impl", "format"] }
+regex-macro = "0.3.0"
+
+# Database and storage
+#mongodb = "3.2.3"
+sqlx = { version = "0.8.5", default-features = false, features = ["postgres", "runtime-tokio", "macros", "chrono", "json"] }
+sea-orm = { version = "1.1.11", features = ["chrono", "with-chrono", "sqlx-postgres", "macros", "runtime-tokio"] }
+
+
+# Data Structures And Types
+moka = { version = "0.12.10", features = ["future"] }
+parking_lot = { version = "0.12.3", features = ["hardware-lock-elision", "arc_lock"] }
+hashbrown = "0.15.3"
+http = "1.3.1"
+http-body-util = "0.1.3"
+bytes = "1.10.1"
+
+
+# Miscellaneous
+approx = "0.5.1"
+lazy_static = "1.5.0"
+strum = { version = "0.27.1", features = ["derive"] }
+itertools = "0.14.0"
+paste = "1.0.15"
+stdext = "0.3.3"
+derived = "0.4.2"
+jsonwebtoken = "9.3.1"
+chrono = { version = "0.4.41", features = ["serde", "rkyv-64", "rkyv-validation"] }

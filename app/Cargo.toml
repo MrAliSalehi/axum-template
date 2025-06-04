@@ -1,0 +1,10 @@
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lib-shared = { path = "../lib-shared" }
+lib-api = { path = "../lib-api" }
+tokio = { workspace = true }
+tracing = { workspace = true }

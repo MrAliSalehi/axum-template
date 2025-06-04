@@ -1,0 +1,16 @@
+[package]
+name = "lib-shared"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dotenvy = { workspace = true }
+tracing = { workspace = true }
+eyre = { workspace = true }
+tracing-subscriber = { workspace = true }
+opentelemetry = { workspace = true }
+opentelemetry_sdk = { workspace = true }
+opentelemetry-otlp = { workspace = true }
+parking_lot = { workspace = true }
+sysinfo = { workspace = true }
+tokio = { workspace = true }
